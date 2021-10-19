@@ -1,3 +1,6 @@
-## [1.0.1-alpha] - 19-10-2021.
+## [1.0.2-alpha] - 19-10-2021.
 
-- Initial Publish.
+Squashed publish stats
+- Initial publish.
+- Added ReadMe.
+- Added example to readme.
