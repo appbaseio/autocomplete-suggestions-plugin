@@ -19,8 +19,6 @@ npm install @appbase/autocomplete-suggestions-plugin
 
 ## Usage
 
-## Usage
-
 To get started, you need a container for your autocomplete to go in. If you don't have one already, you can insert one into your markup:
 
 ```js title="HTML"
@@ -75,7 +73,8 @@ autocomplete({
 Click [here](https://codesandbox.io/embed/example-autocomplete-js-58fmn?fontsize=14&hidenavigation=1&theme=dark) to checkout the advanced example to see all properties in action.
 [![image](https://user-images.githubusercontent.com/57627350/137906345-52fb90d2-9eca-471d-82ba-9500b81bf77b.png)](https://codesandbox.io/embed/example-autocomplete-js-58fmn?fontsize=14&hidenavigation=1&theme=dark)
 
----
+<br/>
+
 ## Documentation
 
 1. **appbaseClientConfig `Object` `Required`**
