@@ -19,8 +19,63 @@ npm install @appbase/autocomplete-suggestions-plugin
 
 ## Usage
 
+## Usage
 
+To get started, you need a container for your autocomplete to go in. If you don't have one already, you can insert one into your markup:
 
+```js title="HTML"
+<div id="autocomplete"></div>
+```
+
+Then, insert your autocomplete into it by calling the [`autocomplete`](https://www.algolia.com/doc/ui-libraries/autocomplete/api-reference/autocomplete-js/autocomplete/) function and providing the [`container`](https://www.algolia.com/doc/ui-libraries/autocomplete/api-reference/autocomplete-js/autocomplete/#param-container). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
+
+Import the [@appbaseio/autocomplete-suggestions-plugin](https://github.com/appbaseio/autocomplete-suggestions-plugin) plugin utility and create a suggestions plugin by passing [appbase-js](https://www.npmjs.com/package/appbase-js) client config and the [query config](https://docs.appbase.io/docs/search/reactivesearch-api/reference) to fetch suggestions. Additionally, you can pass the third argument for UI customisation.
+
+As a final step, pass this plugin to the `plugins` property while calling [`autocomplete`](https://www.algolia.com/doc/ui-libraries/autocomplete/api-reference/autocomplete-js/autocomplete/) function.
+
+Make sure to provide a container (e.g., a `div`), not an `input`. Autocomplete generates a fully accessible search box for you.
+
+```js title="JavaScript"
+import { autocomplete } from '@algolia/autocomplete-js';
+import createSuggestionsPlugin from "@appbaseio/autocomplete-suggestions-plugin";
+
+// appbase client config object
+const appbaseClientConfig = {
+  url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
+  app: "best-buy-dataset",
+  credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
+};
+
+// reactivesearch api configuration
+const rsApiConfig = {
+  enableRecentSuggestions: true,
+  enablePopularSuggestions: true,
+  recentSuggestionsConfig: {
+    size: 5,
+    minChars: 5,
+  },
+  popularSuggestionsConfig: {
+    size: 5,
+    showGlobal: true,
+  },
+  size: 5,
+};
+
+const suggestionsPlugin = createSuggestionsPlugin(appbaseClientConfig, {
+  ...rsApiConfig,
+});
+
+autocomplete({
+  container: '#autocomplete',
+  plugins: [suggestionsPlugin],
+  // ...
+});
+```
+
+Click [here](https://codesandbox.io/embed/example-autocomplete-js-58fmn?fontsize=14&hidenavigation=1&theme=dark) to checkout the advanced example to see all properties in action.
+[![image](https://user-images.githubusercontent.com/57627350/137906345-52fb90d2-9eca-471d-82ba-9500b81bf77b.png)](https://codesandbox.io/embed/example-autocomplete-js-58fmn?fontsize=14&hidenavigation=1&theme=dark)
+
+---
 ## Documentation
 
 1. **appbaseClientConfig `Object` `Required`**
