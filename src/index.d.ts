@@ -5,6 +5,7 @@ interface AppbaseConfig {
   username?: string;
   password?: string;
   enableTelemetry?: boolean;
+  settings?: Object;
 }
 
 interface RenderConfig {
@@ -21,5 +22,5 @@ declare function createSuggestionsPlugin(
   appbaseClientConfig: AppbaseConfig,
   queryConfig: Object,
   renderConfig: RenderConfig
-): AppbaseInstanceObject;
-export default appbasejs;
+): Object;
+export default createSuggestionsPlugin;

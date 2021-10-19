@@ -8,21 +8,9 @@ import {
 import { QUERY_ID } from "./utils/constants";
 import "./index.css";
 function createSuggestionsPlugin(
-  appbaseClientConfig = {
-    url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
-    app: "best-buy-dataset",
-    credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
-    settings: {},
-  },
+  appbaseClientConfig = {},
   queryConfig = {},
-  renderConfig = {
-    renderItem: undefined,
-    renderHeader: undefined,
-    renderFooter: undefined,
-    onItemSelect: undefined,
-    renderNoResults: undefined,
-    useContextValue: false,
-  }
+  renderConfig = {}
 ) {
   // Create appbase instance to use methods
   const appbaseRef = Appbase({
