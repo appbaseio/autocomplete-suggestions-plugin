@@ -1,4 +1,4 @@
-## [1.0.5-alpha] - 19-10-2021.
+## [1.0.6-alpha] - 19-10-2021.
 
 Squashed publish stats
 - Initial publish.
