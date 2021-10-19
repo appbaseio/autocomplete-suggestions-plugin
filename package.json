@@ -4,7 +4,7 @@
   "description": "A suggestions plugin for autocomplete-js, backed by appbase client.",
   "main": "lib/index.js",
   "module": "lib/index.js",
-  "types": "dist/index.d.ts",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "./node_modules/.bin/esbuild src/index.js --bundle --minify --loader:.js=jsx --jsx-factory= --format=esm --target=esnext  --outfile=lib/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
