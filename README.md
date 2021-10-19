@@ -4,17 +4,17 @@
 
 </div>
 
-# @appbase/autocomplete-suggestions-plugin
+# @appbaseio/autocomplete-suggestions-plugin
 
 
-The `@appbase/autocomplete-suggestions-plugin`  is a Suggestions plugin that adds [Query Suggestions](#) powered by [appbase-js](https://www.npmjs.com/package/appbase-js) client, to your autocomplete.
+The `@appbaseio/autocomplete-suggestions-plugin`  is a Suggestions plugin that adds [Query Suggestions](#) powered by [appbase-js](https://www.npmjs.com/package/appbase-js) client, to your autocomplete.
 
 ## Installation
 
 ```sh
-yarn add @appbase/autocomplete-suggestions-plugin
+yarn add @appbaseio/autocomplete-suggestions-plugin
 # or
-npm install @appbase/autocomplete-suggestions-plugin
+npm install @appbaseio/autocomplete-suggestions-plugin
 ```
 
 ## Usage
