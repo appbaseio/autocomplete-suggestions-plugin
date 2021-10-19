@@ -1,6 +1,6 @@
 {
   "name": "@appbaseio/autocomplete-suggestions-plugin",
-  "version": "1.0.2-alpha",
+  "version": "1.0.3-alpha",
   "description": "A suggestions plugin for autocomplete-js, backed by appbase client.",
   "main": "lib/index.js",
   "module": "lib/index.js",
