@@ -71,7 +71,7 @@ autocomplete({
 ```
 
 Click [here](https://codesandbox.io/embed/example-autocomplete-js-58fmn?fontsize=14&hidenavigation=1&theme=dark) to checkout the advanced example to see all properties in action.
-[![image](https://user-images.githubusercontent.com/57627350/137906345-52fb90d2-9eca-471d-82ba-9500b81bf77b.png)](https://codesandbox.io/embed/example-autocomplete-js-58fmn?fontsize=14&hidenavigation=1&theme=dark)
+[![autocomplete-plugin-example](https://user-images.githubusercontent.com/57627350/137917843-4aa8a3d0-36a0-4220-9034-f8d4d413365c.gif)](https://codesandbox.io/embed/example-autocomplete-js-58fmn?fontsize=14&hidenavigation=1&theme=dark)
 
 <br/>
 
