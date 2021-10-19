@@ -1,6 +1,6 @@
 <div align="center">
 
-[![Version](https://img.shields.io/npm/v/@algolia/autocomplete-js.svg?style=flat-square)](https://www.npmjs.com/package/@algolia/autocomplete-js) [![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
+[![Version](https://img.shields.io/npm/v/@appbaseio/autocomplete-suggestions-plugin.svg?style=flat-square)](https://www.npmjs.com/package/@appbaseio/autocomplete-suggestions-plugin) [![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 
 </div>
 
