@@ -1,3 +1,7 @@
+## [1.0.8-alpha] - 22-10-2021.
+
+- testing unbundled build
+
 ## [1.0.7-alpha] - 19-10-2021.
 
 Squashed publish stats
