@@ -7,7 +7,6 @@ import {
   renderItemLabel,
 } from "./utils/helper";
 import { QUERY_ID } from "./utils/constants";
-import "./index.css";
 function createSuggestionsPlugin(
   appbaseClientConfig = {},
   queryConfig = {},
@@ -84,10 +83,31 @@ function createSuggestionsPlugin(
                 });
               }
               return (
-                <div className="item">
-                  <div className="item__content-wrapper">
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    width: "100%",
+                    marginLeft: "5px"
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "max-content 1fr",
+                    }}
+                  >
                     {getIcon(item.type)(createElement)}
                     <span
+                      style={{
+                        display: "block",
+                        overflow: "hidden",
+                        whiteSpace: "nowrap",
+                        textOverflow: "ellipsis",
+                        paddingRight: "1rem",
+                      }}
                       dangerouslySetInnerHTML={{
                         __html: renderItemLabel(
                           item.label,
@@ -97,7 +117,7 @@ function createSuggestionsPlugin(
                       }}
                     ></span>
                   </div>
-                  <div className="item__actions-wrapper">
+                  <div style={{ display: "grid" }}>
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
@@ -106,9 +126,22 @@ function createSuggestionsPlugin(
                         refresh();
                       }}
                       type="button"
-                      className="set-search-arrow"
                     >
-                      <svg viewBox="0 0 24 24" fill="currentColor">
+                      <svg
+                        style={{
+                          marginRight: "1rem",
+                          display: "inline",
+                          fontSize: "20px",
+                          cursor: "pointer",
+                          color: "#707070",
+                          height: "22px",
+                          ":hover": {
+                            color: "#000",
+                          },
+                        }}
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
                         <path d="M8 17v-7.586l8.293 8.293c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414l-8.293-8.293h7.586c0.552 0 1-0.448 1-1s-0.448-1-1-1h-10c-0.552 0-1 0.448-1 1v10c0 0.552 0.448 1 1 1s1-0.448 1-1z"></path>
                       </svg>
                     </button>

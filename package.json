@@ -1,18 +1,18 @@
 {
   "name": "@appbaseio/autocomplete-suggestions-plugin",
-  "version": "1.0.15-alpha",
+  "version": "1.0.16-alpha",
   "description": "A suggestions plugin for autocomplete-js, backed by appbase client.",
   "main": "lib/index.js",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "./node_modules/.bin/esbuild src/index.js --bundle --minify --loader:.js=jsx  --format=esm --target=esnext  --outfile=lib/index.js",
+    "build": "node ./esbuild.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "info@appbase.io",
   "license": "ISC",
   "devDependencies": {
-    "esbuild": "^0.13.8"
+    "esbuild": "^0.13.9"
   },
   "dependencies": {
     "appbase-js": "^4.3.1"
