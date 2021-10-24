@@ -4,6 +4,7 @@ import {
   getIcon,
   processSuggestions,
   parseAppbaseClientObject,
+  renderItemLabel,
 } from "./utils/helper";
 import { QUERY_ID } from "./utils/constants";
 import "./index.css";
@@ -88,12 +89,15 @@ function createSuggestionsPlugin(
                     {getIcon(item.type)(createElement)}
                     <span
                       dangerouslySetInnerHTML={{
-                        __html: item.label,
+                        __html: renderItemLabel(
+                          item.label,
+                          item.value,
+                          item._category
+                        ),
                       }}
                     ></span>
                   </div>
                   <div className="item__actions-wrapper">
-                    {" "}
                     <button
                       onClick={(e) => {
                         e.stopPropagation();

@@ -82,3 +82,9 @@ export const parseAppbaseClientObject = (configObject) => {
 
   return parsedConfig;
 };
+
+export const renderItemLabel = (label, value,category) => {
+  if (!category) return label;
+
+  return value + "<b> in "+category+"</b>";
+}

@@ -1,4 +1,4 @@
-## [1.0.8-alpha] - 22-10-2021.
+## [1.0.11-alpha] - 22-10-2021.
 
 - testing unbundled build
 
