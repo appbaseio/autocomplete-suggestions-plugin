@@ -62,6 +62,22 @@ function createSuggestionsPlugin(
               renderConfig.onItemSelect(props);
               return;
             }
+            if (
+              item.url &&
+              // check valid url: https://stackoverflow.com/a/43467144/10822996
+              new RegExp(
+                "^(https?:\\/\\/)?" + // protocol
+                  "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+                  "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+                  "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+                  "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+                  "(\\#[-a-z\\d_]*)?$",
+                "i"
+              ).test(item.url)
+            ) {
+              window.open(item.url);
+              return;
+            }
             setQuery(item.label);
             refresh();
           },
@@ -90,7 +106,7 @@ function createSuggestionsPlugin(
                     alignItems: "center",
                     justifyContent: "space-between",
                     width: "100%",
-                    marginLeft: "5px"
+                    marginLeft: "5px",
                   }}
                 >
                   <div
