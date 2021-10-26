@@ -1,0 +1,18 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="61b5f464641368668ff5f44effe17ae5" type="image/x-icon">
+    <link rel="stylesheet" href="66cb0d1a5fc9dd631603c21aad78132a">
+
+    <title>Basic Example</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="autocomplete"></div>
+    </div>
+    <script src="519966bb23ab9fb59ec12c8401f911c0"></script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+var _algoliaAutocompleteJs = require("@algolia/autocomplete-js");
+require("@algolia/autocomplete-theme-classic");
+var _appbaseioAutocompleteSuggestionsPlugin = require("@appbaseio/autocomplete-suggestions-plugin");
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+var _appbaseioAutocompleteSuggestionsPluginDefault = _parcelHelpers.interopDefault(_appbaseioAutocompleteSuggestionsPlugin);
+// appbase client config object
+const appbaseClientConfig = {
+  url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
+  app: "best-buy-dataset",
+  credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
+  settings: {
+    enableQueryRules: true
+  }
+};
+// reactivesearch api configuration
+const rsApiConfig = {
+  dataField: [{
+    field: "name.autosuggest",
+    weight: 1
+  }, {
+    field: "name",
+    weight: 3
+  }],
+  enableRecentSuggestions: true,
+  recentSuggestionsConfig: {
+    size: 5
+  },
+  size: 2
+};
+const suggestionsPlugin = _appbaseioAutocompleteSuggestionsPluginDefault.default(appbaseClientConfig, {
+  ...rsApiConfig
+});
+_algoliaAutocompleteJs.autocomplete({
+  container: "#autocomplete",
+  plugins: [suggestionsPlugin],
+  debug: true,
+  openOnFocus: true,
+  detachedMediaQuery: "none"
+});

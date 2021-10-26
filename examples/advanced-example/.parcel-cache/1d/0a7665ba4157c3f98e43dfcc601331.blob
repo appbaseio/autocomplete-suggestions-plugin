@@ -1,0 +1,18 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="/favicon.HASH_REF_78e76f790c1cb3ff938ef11c481dfaa8.png" type="image/x-icon">
+    <link rel="stylesheet" href="/index.HASH_REF_8a6e625a6f078c797be837fbf556d9ac.css">
+
+    <title>Advanced Example</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="autocomplete"></div>
+    </div>
+    <script src="/index.HASH_REF_d231a23f43d60e28ed500b93b4f5078c.js"></script>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 {
   "name": "@appbaseio/autocomplete-suggestions-plugin",
-  "version": "1.0.17-alpha",
+  "version": "1.0.18-alpha",
   "description": "A suggestions plugin for autocomplete-js, backed by appbase client.",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -15,7 +15,8 @@
     "esbuild": "^0.13.9"
   },
   "dependencies": {
-    "appbase-js": "^4.3.1"
+    "appbase-js": "^4.3.1",
+    "eslint-config-prettier": "^8.3.0"
   },
   "publishConfig": {
     "access": "public"

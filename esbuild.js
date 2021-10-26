@@ -11,5 +11,6 @@ require("esbuild")
     },
     format: "esm",
     target: "es6",
+    watch:true
   })
   .catch(() => process.exit(1));

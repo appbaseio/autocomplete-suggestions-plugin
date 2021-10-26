@@ -1,0 +1,131 @@
+* {
+  font-family: Open Sans, system-ui, BlinkMacSystemFont, -apple-system, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  width: 100vw;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-direction: row !important;
+  width: 100%;
+}
+
+.item__content-wrapper {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+}
+
+.item__content-wrapper span {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 1rem;
+}
+.item__actions-wrapper {
+  display: grid;
+}
+
+button.set-search-arrow svg {
+  font-size: 20px;
+  cursor: pointer;
+  color: #707070;
+  height: 22px;
+}
+
+button.set-search-arrow:hover svg {
+  color: black;
+}
+
+svg {
+  margin-right: 1rem;
+  display: inline;
+}
+
+.product-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0.7rem;
+  height: 120px;
+  border: 1px solid rgba(62, 52, 211, 0.205);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.product-item .product-image {
+  flex: 0 0 20%;
+  height: 100%;
+  overflow: hidden;
+  margin-right: 2rem;
+  border: 1px solid rgb(216, 218, 247);
+  border-radius: 2px;
+}
+
+.product-item .product-image > img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.product-item .product-details {
+  text-align: left;
+  width: 74%;
+}
+
+.product-item .product-details h4 {
+  text-align: left;
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.product-item .product-details p {
+  text-align: left;
+  margin-top: 7px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin-bottom: 0;
+  line-height: 18px;
+}
+
+span.result-stats {
+  display: inline-block;
+  min-height: 7px;
+  padding: 1rem 1rem 0.5rem !important;
+}
+.response-json {
+  height: 75vh;
+  overflow: scroll;
+  border: 1px solid #9998b5;
+  padding: 0.7rem !important;
+}
+
+.response-json ul {
+  min-height: 100%;
+  text-align: left;
+  padding: 0.3rem !important;
+  margin: 0 !important;
+}
+
+.aa-Panel--scrollable {
+  padding-left: 10px !important;
+}

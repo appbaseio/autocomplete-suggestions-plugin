@@ -1,4 +1,7 @@
-## [1.0.17-alpha] - 226-10-2021.
+## [1.0.18-alpha] - 26-10-2021.
+
+- fix setQuery logic
+## [1.0.17-alpha] - 26-10-2021.
 
 - url field support 
 - categoryfield support 

@@ -78,7 +78,13 @@ function createSuggestionsPlugin(
               window.open(item.url);
               return;
             }
-            setQuery(item._category ? item.label : item.value);
+            console.log(item);
+            setQuery(
+              (item._category ? item.label : item.value).replace(
+                /(<([^>]+)>)/gi,
+                ""
+              )
+            );
             refresh();
           },
           templates: {
@@ -138,7 +144,7 @@ function createSuggestionsPlugin(
                       onClick={(e) => {
                         e.stopPropagation();
 
-                        setQuery(item._category ? item.label : item.value);
+                        setQuery((item._category ? item.label : item.value).replace( /(<([^>]+)>)/ig, ''));
                         refresh();
                       }}
                       type="button"
