@@ -5,7 +5,7 @@
   "dependencies": {
     "@algolia/autocomplete-js": "1.4.1",
     "@algolia/autocomplete-theme-classic": "1.4.1",
-    "@appbaseio/autocomplete-suggestions-plugin": "*",
+    "@appbaseio/autocomplete-suggestions-plugin": "^1.0.19-alpha",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
