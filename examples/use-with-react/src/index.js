@@ -76,7 +76,6 @@ function Autocomplete(props) {
 
   return (
     <>
-      <h1>Use with React</h1>
       <div id="autocomplete"></div>
     </>
   );
