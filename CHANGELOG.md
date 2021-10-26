@@ -1,3 +1,7 @@
+## [1.0.17-alpha] - 226-10-2021.
+
+- url field support 
+- categoryfield support 
 ## [1.0.16-alpha] - 22-10-2021.
 
 - css issue resolved with inline styles

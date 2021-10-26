@@ -78,7 +78,7 @@ function createSuggestionsPlugin(
               window.open(item.url);
               return;
             }
-            setQuery(item.label);
+            setQuery(item._category ? item.label : item.value);
             refresh();
           },
           templates: {
@@ -138,7 +138,7 @@ function createSuggestionsPlugin(
                       onClick={(e) => {
                         e.stopPropagation();
 
-                        setQuery(item.value);
+                        setQuery(item._category ? item.label : item.value);
                         refresh();
                       }}
                       type="button"
