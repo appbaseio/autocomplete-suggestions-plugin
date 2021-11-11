@@ -22,29 +22,29 @@ const rsApiConfig = {
   dataField: [
     {
       field: "name.autosuggest",
-      weight: 1
+      weight: 1,
     },
     {
       field: "name",
-      weight: 3
-    }
+      weight: 3,
+    },
   ],
   enableRecentSuggestions: true,
   enablePopularSuggestions: true,
   recentSuggestionsConfig: {
     size: 5,
-    minChars: 5
+    minChars: 5,
   },
   popularSuggestionsConfig: {
     size: 5,
-    showGlobal: true
+    showGlobal: true,
   },
-  size: 5
+  size: 5,
 };
 
 // default usage: plugin to fetch suggestions
 const defaultUsagePlugin = createSuggestionsPlugin(appbaseClientConfig, {
-  ...rsApiConfig
+  ...rsApiConfig,
 });
 
 export default {
@@ -56,15 +56,16 @@ export default {
         placeholder: "Search",
         openOnFocus: true,
         plugins: [defaultUsagePlugin],
-        detachedMediaQuery: "none"
+        detachedMediaQuery: "none",
       });
     });
   },
   render() {
     const style = {
+      "font-family": "Roboto, Arial, Helvetica, sans-serif",
       margin: "0 auto",
       "max-width": "640px",
-      width: "100%"
+      width: "100%",
     };
 
     return createElement(
@@ -72,5 +73,5 @@ export default {
       { style },
       createElement("div", { id: "autocomplete" })
     );
-  }
+  },
 };

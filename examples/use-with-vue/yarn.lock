@@ -140,12 +140,13 @@
     "@algolia/logger-common" "4.11.0"
     "@algolia/requester-common" "4.11.0"
 
-"@appbaseio/autocomplete-suggestions-plugin@1.0.18-alpha":
-  version "1.0.18-alpha"
-  resolved "https://registry.yarnpkg.com/@appbaseio/autocomplete-suggestions-plugin/-/autocomplete-suggestions-plugin-1.0.18-alpha.tgz#f489d5beab5cbf2fd388a2e3b6b742491afbc54f"
-  integrity sha512-d8m73Cx51VQ0/CMP31aWGzxbpiH8iboyTZ/8M7U+rypJhs4jfJIoOFxi1HllpnU8+jBw3m8Cz4d4y56zzOdcKw==
+"@appbaseio/autocomplete-suggestions-plugin@^1.0.19-alpha":
+  version "1.0.19-alpha"
+  resolved "https://registry.yarnpkg.com/@appbaseio/autocomplete-suggestions-plugin/-/autocomplete-suggestions-plugin-1.0.19-alpha.tgz#89fd2a94cff5045b585b5eca5e968035664dffd3"
+  integrity sha512-q+tpDwBS1GMRX3whkYegFzdLReYHiK3XDaKPymnSQfYKGhiP0E/Y4/sZdeuSKUcJrg3R8KQvhWgWeiusLn5Dxw==
   dependencies:
     appbase-js "^4.3.1"
+    eslint-config-prettier "^8.3.0"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4":
   version "7.10.4"
@@ -3660,6 +3661,11 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
+
+eslint-config-prettier@^8.3.0:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.3.0.tgz#f7471b20b6fe8a9a9254cc684454202886a2dd7a"
+  integrity sha512-BgZuLUSeKzvlL/VUjx/Yb787VQ26RU3gGjA3iiFvdsp/2bMfVIWUVP7tjxtjS0e+HP409cPlPvNkQloz8C91ew==
 
 eslint-loader@^2.2.1:
   version "2.2.1"
