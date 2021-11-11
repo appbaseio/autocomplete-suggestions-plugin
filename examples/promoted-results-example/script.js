@@ -34,15 +34,15 @@ const rsApiConfig = {
   recentSuggestionsConfig: {
     size: 3,
     minHits: 2,
-    index: "best-buy-dataset",
+    index: "recipes-demo",
   },
   enablePopularSuggestions: true,
   popularSuggestionsConfig: {
     size: 3,
     minChars: 3,
-    index: "best-buy-dataset",
+    index: "recipes-demo",
   },
-  index: "best-buy-dataset",
+  index: "recipes-demo",
   size: 3,
 };
 

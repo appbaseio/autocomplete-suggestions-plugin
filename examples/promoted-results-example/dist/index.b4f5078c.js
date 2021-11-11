@@ -439,7 +439,7 @@ const appbaseClientConfig = {
   credentials: "a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61",
   url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
   settings: {
-    enableQueryRules: true
+    recordAnalytics: true
   }
 };
 // reactivesearch api configuration
@@ -456,16 +456,19 @@ const rsApiConfig = {
   }],
   highlight: true,
   enableRecentSuggestions: true,
-  enablePopularSuggestions: true,
   recentSuggestionsConfig: {
-    size: 2,
-    minChars: 5
+    size: 3,
+    minHits: 2,
+    index: "recipes-demo"
   },
+  enablePopularSuggestions: true,
   popularSuggestionsConfig: {
-    size: 2,
-    showGlobal: true
+    size: 3,
+    minChars: 3,
+    index: "recipes-demo"
   },
-  size: 5
+  index: "recipes-demo",
+  size: 3
 };
 const suggestionsPlugin = _appbaseioAutocompleteSuggestionsPluginDefault.default(appbaseClientConfig, {
   ...rsApiConfig
@@ -478,7 +481,7 @@ _algoliaAutocompleteJs.autocomplete({
   detachedMediaQuery: "none"
 });
 
-},{"@algolia/autocomplete-js":"3Dm7o","@algolia/autocomplete-theme-classic":"4ZOnh","@appbaseio/autocomplete-suggestions-plugin":"3uHrG","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"3Dm7o":[function(require,module,exports) {
+},{"@algolia/autocomplete-js":"3Dm7o","@algolia/autocomplete-theme-classic":"4ZOnh","@appbaseio/autocomplete-suggestions-plugin":"4Vknd","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"3Dm7o":[function(require,module,exports) {
 var define;
 /*! @algolia/autocomplete-js 1.4.1 | MIT License | © Algolia, Inc. and contributors | https://github.com/algolia/autocomplete*/
 !(function (e, t) {
@@ -3058,7 +3061,7 @@ var define;
   }));
 });
 
-},{}],"4ZOnh":[function() {},{}],"3uHrG":[function(require,module,exports) {
+},{}],"4ZOnh":[function() {},{}],"4Vknd":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "default", function () {
