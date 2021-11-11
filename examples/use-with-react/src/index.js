@@ -12,6 +12,9 @@ const appbaseClientConfig = {
   url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
   app: "best-buy-dataset",
   credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
+  settings: {
+    recordAnalytics: true,
+  },
 };
 
 // reactivesearch api configuration
@@ -28,16 +31,18 @@ const rsApiConfig = {
     },
   ],
   enableRecentSuggestions: true,
-  enablePopularSuggestions: true,
   recentSuggestionsConfig: {
-    size: 5,
-    minChars: 5,
+    size: 3,
+    minHits: 2,
+    index: "best-buy-dataset",
   },
+  enablePopularSuggestions: true,
   popularSuggestionsConfig: {
-    size: 5,
-    showGlobal: true,
+    size: 3,
+    minChars: 3,
+    index: "best-buy-dataset",
   },
-  size: 5,
+  index: "best-buy-dataset",
 };
 
 // default usage: plugin to fetch suggestions

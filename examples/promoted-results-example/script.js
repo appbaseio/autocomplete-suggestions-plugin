@@ -8,7 +8,7 @@ const appbaseClientConfig = {
   credentials: "a03a1cb71321:75b6603d-9456-4a5a-af6b-a487b309eb61",
   url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
   settings: {
-    enableQueryRules: true,
+    recordAnalytics: true,
   },
 };
 
@@ -31,16 +31,19 @@ const rsApiConfig = {
   ],
   highlight: true,
   enableRecentSuggestions: true,
-  enablePopularSuggestions: true,
   recentSuggestionsConfig: {
-    size: 2,
-    minChars: 5,
+    size: 3,
+    minHits: 2,
+    index: "best-buy-dataset",
   },
+  enablePopularSuggestions: true,
   popularSuggestionsConfig: {
-    size: 2,
-    showGlobal: true,
+    size: 3,
+    minChars: 3,
+    index: "best-buy-dataset",
   },
-  size: 5,
+  index: "best-buy-dataset",
+  size: 3,
 };
 
 const suggestionsPlugin = createSuggestionsPlugin(appbaseClientConfig, {

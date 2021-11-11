@@ -9,13 +9,13 @@ const appbaseClientConfig = {
   credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
   settings: {
     enableQueryRules: true,
+    recordAnalytics: true,
   },
 };
 
 // reactivesearch api configuration
 const rsApiConfig = {
-  size: 5,
-  enableRecentSuggestions: true,
+  size: 3,
   highlight: true,
   dataField: [
     {
@@ -27,6 +27,19 @@ const rsApiConfig = {
       weight: "3",
     },
   ],
+  enableRecentSuggestions: true,
+  recentSuggestionsConfig: {
+    size: 3,
+    minHits: 2,
+    index: "best-buy-dataset",
+  },
+  enablePopularSuggestions: true,
+  popularSuggestionsConfig: {
+    size: 3,
+    minChars: 3,
+    index: "best-buy-dataset",
+  },
+  index: "best-buy-dataset",
 };
 
 const suggestionsPlugin = createSuggestionsPlugin(appbaseClientConfig, {

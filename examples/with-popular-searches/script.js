@@ -8,7 +8,7 @@ const appbaseClientConfig = {
   app: "best-buy-dataset",
   credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
   settings: {
-    enableQueryRules: true,
+    recordAnalytics: true,
   },
 };
 
@@ -26,10 +26,12 @@ const rsApiConfig = {
   ],
   enablePopularSuggestions: true,
   popularSuggestionsConfig: {
-    size: 5,
-    showGlobal: true
+    size: 3,
+    minChars: 3,
+    index: "best-buy-dataset",
   },
-  size: 5,
+  index: "best-buy-dataset",
+  size: 3,
 };
 
 const suggestionsPlugin = createSuggestionsPlugin(appbaseClientConfig, {

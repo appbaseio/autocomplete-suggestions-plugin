@@ -12,16 +12,19 @@ const appbaseClientConfig = {
 // reactivesearch api configuration
 const rsApiConfig = {
   enableRecentSuggestions: true,
-  enablePopularSuggestions: true,
   recentSuggestionsConfig: {
-    size: 2,
-    minChars: 5
+    size: 3,
+    minHits: 2,
+    index: "best-buy-dataset",
   },
+  enablePopularSuggestions: true,
   popularSuggestionsConfig: {
-    size: 2,
-    showGlobal: true
+    size: 3,
+    minChars: 3,
+    index: "best-buy-dataset",
   },
-  size: 5,
+  index: "best-buy-dataset",
+  size: 3,
   categoryField: "department.keyword"
 };
 

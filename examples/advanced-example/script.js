@@ -30,19 +30,19 @@ const rsApiConfig = {
     },
   ],
   enableRecentSuggestions: true,
-  enablePopularSuggestions: true,
   recentSuggestionsConfig: {
-    size: 5,
+    size: 3,
     minHits: 2,
-    minChars: 4,
+    index: "best-buy-dataset",
   },
+  enablePopularSuggestions: true,
   popularSuggestionsConfig: {
-    size: 5,
-    minCount: 2,
+    size: 3,
     minChars: 3,
-    // showGlobal: true,
+    index: "best-buy-dataset",
   },
-  size: 5,
+  index: "best-buy-dataset",
+  size: 3
 };
 
 // default usage: plugin to fetch suggestions

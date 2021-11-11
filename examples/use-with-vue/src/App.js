@@ -10,7 +10,10 @@ import createSuggestionsPlugin from "@appbaseio/autocomplete-suggestions-plugin"
 const appbaseClientConfig = {
   url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
   app: "best-buy-dataset",
-  credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947"
+  credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
+  settings: {
+    recordAnalytics: true,
+  },
 };
 
 // reactivesearch api configuration
