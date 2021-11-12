@@ -16,6 +16,7 @@ function createSuggestionsPlugin(
   const appbaseRef = Appbase({
     ...parseAppbaseClientObject(appbaseClientConfig),
   });
+
   const sourceId = `suggestions_source_${Math.random() * Math.random() * 1000}`;
   return {
     getSources: function getSources(_ref) {
@@ -27,6 +28,9 @@ function createSuggestionsPlugin(
         {
           sourceId: sourceId,
           getItems() {
+          appbaseRef.setHeaders({
+            "X-Timestamp": new Date().getTime(),
+          });
             return appbaseRef
               .reactiveSearchv3(
                 [
