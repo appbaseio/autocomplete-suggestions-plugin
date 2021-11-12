@@ -1,3 +1,7 @@
+## [1.1.0-alpha] - 26-10-2021.
+
+- added x-timestamp header for better analytics
+
 ## [1.0.18-alpha] - 26-10-2021.
 
 - fix setQuery logic

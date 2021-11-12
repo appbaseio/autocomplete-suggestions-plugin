@@ -28,9 +28,6 @@ function createSuggestionsPlugin(
         {
           sourceId: sourceId,
           getItems() {
-          appbaseRef.setHeaders({
-            "X-Timestamp": new Date().getTime(),
-          });
             return appbaseRef
               .reactiveSearchv3(
                 [
@@ -148,7 +145,12 @@ function createSuggestionsPlugin(
                       onClick={(e) => {
                         e.stopPropagation();
 
-                        setQuery((item._category ? item.label : item.value).replace( /(<([^>]+)>)/ig, ''));
+                        setQuery(
+                          (item._category ? item.label : item.value).replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          )
+                        );
                         refresh();
                       }}
                       type="button"

@@ -11,7 +11,7 @@
   "dependencies": {
     "@algolia/autocomplete-js": "1.4.1",
     "@algolia/autocomplete-theme-classic": "1.4.1",
-    "@appbaseio/autocomplete-suggestions-plugin": "^1.0.19-alpha",
+    "@appbaseio/autocomplete-suggestions-plugin": "^1.1.0-alpha",
     "preact": "10.5.15"
   },
   "devDependencies": {
