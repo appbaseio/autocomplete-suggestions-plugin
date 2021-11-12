@@ -36,9 +36,9 @@
   resolved "https://registry.npmjs.org/@algolia/autocomplete-theme-classic/-/autocomplete-theme-classic-1.4.1.tgz"
   integrity sha512-Ith7AedFYvbqZKJoi6MWwI5pGIW0BTvnoE82//lSZcGWJDGuF+D3Vn4goaUwmv1XZ6VMm0IwX4+sAaMV4QgH+w==
 
-"@appbaseio/autocomplete-suggestions-plugin@^1.1.0-alpha":
-  version "1.1.0-alpha"
-  resolved "https://registry.yarnpkg.com/@appbaseio/autocomplete-suggestions-plugin/-/autocomplete-suggestions-plugin-1.1.0-alpha.tgz#89fd2a94cff5045b585b5eca5e968035664dffd3"
+"@appbaseio/autocomplete-suggestions-plugin@^1.1.1-alpha":
+  version "1.1.1-alpha"
+  resolved "https://registry.yarnpkg.com/@appbaseio/autocomplete-suggestions-plugin/-/autocomplete-suggestions-plugin-1.1.1-alpha.tgz#89fd2a94cff5045b585b5eca5e968035664dffd3"
   integrity sha512-q+tpDwBS1GMRX3whkYegFzdLReYHiK3XDaKPymnSQfYKGhiP0E/Y4/sZdeuSKUcJrg3R8KQvhWgWeiusLn5Dxw==
   dependencies:
     appbase-js "^4.3.1"

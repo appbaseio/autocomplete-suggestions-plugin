@@ -1,4 +1,4 @@
-## [1.1.0-alpha] - 26-10-2021.
+## [1.1.1-alpha] - 26-10-2021.
 
 - added x-timestamp header for better analytics
 
