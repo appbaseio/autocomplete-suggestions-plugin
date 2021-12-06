@@ -1,8 +1,10 @@
-import { StrictMode } from "react";
+import { StrictMode, useState } from "react";
 import ReactDOM from "react-dom";
 import React, { useEffect } from "react";
-import './styles.css';
+import "./styles.css";
+import { jsonTreeTheme } from "./utils";
 
+import JSONTree from "react-json-tree";
 import { autocomplete } from "@algolia/autocomplete-js";
 import "@algolia/autocomplete-theme-classic";
 import createSuggestionsPlugin from "@appbaseio/autocomplete-suggestions-plugin";
@@ -12,9 +14,7 @@ const appbaseClientConfig = {
   url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
   app: "best-buy-dataset",
   credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
-  settings: {
-    recordAnalytics: true,
-  },
+  settings: { userId: "s@s", recordAnalytics: true },
 };
 
 // reactivesearch api configuration
@@ -46,19 +46,28 @@ const rsApiConfig = {
 };
 
 // default usage: plugin to fetch suggestions
-const defaultUsagePlugin = createSuggestionsPlugin(appbaseClientConfig, {
-  ...rsApiConfig,
-});
+const defaultUsagePlugin = createSuggestionsPlugin(
+  appbaseClientConfig,
+  {
+    ...rsApiConfig,
+  },
+  {
+    useContextValue: true,
+  }
+);
 
 // initiator for  autocomplete-js
-const initAutocomplete = () => {
+const initAutocomplete = (setstate) => {
   autocomplete({
     container: "#autocomplete",
     placeholder: "Search for products",
     openOnFocus: true,
-    debug: true,
+    // debug: true,
     plugins: [defaultUsagePlugin],
     detachedMediaQuery: "none",
+    onStateChange({ state: { context } }) {
+      setstate({ ...context });
+    },
     // use the below code incase trying to render
     // custom jsx
     // renderer: { createElement, Fragment },
@@ -68,10 +77,11 @@ const initAutocomplete = () => {
   });
 };
 
-function Autocomplete(props) {
+function Autocomplete() {
+  const [state, setstate] = useState({});
   useEffect(() => {
     // initiate autocomplete-js
-    initAutocomplete();
+    initAutocomplete(setstate);
 
     // cleanup before mounting
     return () => {
@@ -82,6 +92,22 @@ function Autocomplete(props) {
   return (
     <>
       <div id="autocomplete"></div>
+      {!!state.time && !!state.total ? (
+        <span className="result-stats">
+          Found <b>{state.total}</b> results in <b>{state.time}</b> ms
+        </span>
+      ) : null}
+      {state.resultsJson && Object.keys(state.resultsJson).length ? (
+        <div className="response-json">
+          <JSONTree
+            theme={jsonTreeTheme}
+            invertTheme={true}
+            data={state.resultsJson}
+            shouldExpandNode={() => true}
+            keyPath={["products"]}
+          />
+        </div>
+      ) : null}
     </>
   );
 }

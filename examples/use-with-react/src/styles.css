@@ -1,6 +1,28 @@
-
-body,h1{
+body,
+h1 {
   text-align: center;
-   font-family: Roboto, Arial, Helvetica, sans-serif;
-  
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+span.result-stats {
+  display: inline-block;
+  min-height: 7px;
+  padding: 1rem 1rem 0.5rem !important;
+}
+.response-json {
+  height: 75vh;
+  overflow: scroll;
+  border: 1px solid #9998b5;
+  padding: 0.7rem !important;
+}
+
+.response-json ul {
+  min-height: 100%;
+  text-align: left;
+  padding: 0.3rem !important;
+  margin: 0 !important;
+}
+
+.aa-Panel--scrollable {
+  padding-left: 10px !important;
 }
