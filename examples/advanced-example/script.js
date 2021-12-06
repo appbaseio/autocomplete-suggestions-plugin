@@ -71,7 +71,9 @@ const advancedUsagePlugin = createSuggestionsPlugin(
         <a
           className="aa-item product-item"
           href={
-            item._source?.url ?? `https://www.google.com/search?q=${item.value}`
+            item._source
+              ? item._source.url
+              : `https://www.google.com/search?q=${item.value}`
           }
           target="_blank"
           rel="noreferrer"
@@ -79,8 +81,9 @@ const advancedUsagePlugin = createSuggestionsPlugin(
           <div className="product-image">
             <img
               src={
-                item._source?.image ??
-                "https://m.media-amazon.com/images/I/81c83vd4O+L._SY879_.jpg"
+                item._source
+                  ? item._source.image
+                  : "https://m.media-amazon.com/images/I/81c83vd4O+L._SY879_.jpg"
               }
               alt={item.value}
             />
@@ -88,8 +91,9 @@ const advancedUsagePlugin = createSuggestionsPlugin(
           <div className="product-details">
             <h4>{item.value} (Promoted)</h4>
             <p>
-              {item._source?.shortDescription ??
-                "Samsung offers latest smartphones with advanced technology and design. Buy 3G, 4G, dual sim smartphone at best prices in India."}
+              {item._source
+                ? item._source.shortDescription
+                : "Samsung offers latest smartphones with advanced technology and design. Buy 3G, 4G, dual sim smartphone at best prices in India."}
             </p>
           </div>
         </a>
