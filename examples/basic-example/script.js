@@ -10,6 +10,7 @@ const appbaseClientConfig = {
   app: "best-buy-dataset",
   credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
   settings: {
+    userId: "s@s",
     enableQueryRules: true,
     recordAnalytics: true,
   },
@@ -55,7 +56,7 @@ const suggestionsPlugin = createSuggestionsPlugin(
 autocomplete({
   container: "#autocomplete",
   plugins: [suggestionsPlugin],
-  debug: true,
+  debug: false,
   openOnFocus: true,
   detachedMediaQuery: "none",
   onStateChange({ state: { context } }) {

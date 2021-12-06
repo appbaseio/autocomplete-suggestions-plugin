@@ -12,6 +12,7 @@ const appbaseClientConfig = {
   credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
   settings: {
     userId: "s@s",
+    enableQueryRules: true,
     recordAnalytics: true,
   },
 };
@@ -42,7 +43,7 @@ const rsApiConfig = {
     index: "best-buy-dataset",
   },
   index: "best-buy-dataset",
-  size: 3
+  size: 3,
 };
 
 // default usage: plugin to fetch suggestions
@@ -123,7 +124,7 @@ const advancedUsagePlugin = createSuggestionsPlugin(
       if (url) {
         window.open(url);
       } else {
-        setQuery(label.replace( /(<([^>]+)>)/ig, ''));
+        setQuery(label.replace(/(<([^>]+)>)/gi, ""));
         refresh();
       }
     },
