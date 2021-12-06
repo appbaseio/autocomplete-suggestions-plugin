@@ -1,19 +1,18 @@
 import { onMounted } from "vue";
 import { autocomplete } from "@algolia/autocomplete-js";
+import createSuggestionsPlugin from "@appbaseio/autocomplete-suggestions-plugin";
 
 import "@algolia/autocomplete-theme-classic";
 
+import { renderResults } from "./utils";
 import { createElement } from "./adapter";
-import createSuggestionsPlugin from "@appbaseio/autocomplete-suggestions-plugin";
-
+var JSONTreeView = require("json-tree-view");
 // appbase client config object
 const appbaseClientConfig = {
   url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
   app: "best-buy-dataset",
   credentials: "b8917d239a52:82a2f609-6439-4253-a542-3697f5545947",
-  settings: {
-    recordAnalytics: true,
-  },
+  settings: { userId: "s@s", recordAnalytics: true },
 };
 
 // reactivesearch api configuration
@@ -30,22 +29,27 @@ const rsApiConfig = {
     },
   ],
   enableRecentSuggestions: true,
-  enablePopularSuggestions: true,
   recentSuggestionsConfig: {
-    size: 5,
-    minChars: 5,
+    size: 3,
+    minHits: 2,
+    index: "best-buy-dataset",
   },
+  enablePopularSuggestions: true,
   popularSuggestionsConfig: {
-    size: 5,
-    showGlobal: true,
+    size: 3,
+    minChars: 3,
+    index: "best-buy-dataset",
   },
-  size: 5,
+  index: "best-buy-dataset",
 };
-
 // default usage: plugin to fetch suggestions
-const defaultUsagePlugin = createSuggestionsPlugin(appbaseClientConfig, {
-  ...rsApiConfig,
-});
+const defaultUsagePlugin = createSuggestionsPlugin(
+  appbaseClientConfig,
+  {
+    ...rsApiConfig,
+  },
+  { useContextValue: true }
+);
 
 export default {
   name: "App",
@@ -57,6 +61,10 @@ export default {
         openOnFocus: true,
         plugins: [defaultUsagePlugin],
         detachedMediaQuery: "none",
+        onStateChange({ state: { context } }) {
+          renderResults(context, JSONTreeView);
+        },
+        debug: true,
       });
     });
   },
@@ -68,10 +76,10 @@ export default {
       width: "100%",
     };
 
-    return createElement(
-      "div",
-      { style },
-      createElement("div", { id: "autocomplete" })
-    );
+    return createElement("div", { style }, [
+      createElement("div", { id: "autocomplete" }),
+      createElement("div", { id: "results-stats" }),
+      createElement("div", { id: "result" }),
+    ]);
   },
 };
