@@ -1,7 +1,9 @@
 import { autocomplete } from "@algolia/autocomplete-js";
 import "@algolia/autocomplete-theme-classic";
 import createSuggestionsPlugin from "@appbaseio/autocomplete-suggestions-plugin";
+import { renderResults } from "./utils";
 
+var JSONTreeView = require("json-tree-view");
 // appbase client config object
 const appbaseClientConfig = {
   url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
@@ -42,9 +44,13 @@ const rsApiConfig = {
   index: "best-buy-dataset",
 };
 
-const suggestionsPlugin = createSuggestionsPlugin(appbaseClientConfig, {
-  ...rsApiConfig,
-});
+const suggestionsPlugin = createSuggestionsPlugin(
+  appbaseClientConfig,
+  {
+    ...rsApiConfig,
+  },
+  { useContextValue: true }
+);
 
 autocomplete({
   container: "#autocomplete",
@@ -52,5 +58,8 @@ autocomplete({
   debug: true,
   openOnFocus: true,
   detachedMediaQuery: "none",
+  onStateChange({ state: { context } }) {
+    renderResults(context, JSONTreeView);
+  },
   // ...
 });
