@@ -5,8 +5,8 @@
 body {
   background-color: rgb(244, 244, 249);
   color: rgb(65, 65, 65);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17,6 +17,21 @@ body {
   margin: 0 auto;
   max-width: 640px;
   width: 100%;
+}
+
+#result {
+  margin: 2rem 0;
+  padding: 1rem;
+  background: white;
+  max-height: 75vh;
+  overflow-y: scroll;
+  display: none;
+}
+
+#results-stats {
+  display: block;
+  text-align: center;
+  padding-top: 2rem;
 }
 
 /*! @algolia/autocomplete-theme-classic 1.4.1 | MIT License | © Algolia, Inc. and contributors | https://github.com/algolia/autocomplete */
