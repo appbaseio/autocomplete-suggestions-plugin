@@ -11,7 +11,8 @@
   "dependencies": {
     "@algolia/autocomplete-js": "1.4.1",
     "@algolia/autocomplete-theme-classic": "1.4.1",
-    "@appbaseio/autocomplete-suggestions-plugin": "^1.1.1-alpha"
+    "@appbaseio/autocomplete-suggestions-plugin": "^1.1.1-alpha",
+    "json-tree-view": "^0.4.12"
   },
   "devDependencies": {
     "parcel": "2.0.0-beta.2"
