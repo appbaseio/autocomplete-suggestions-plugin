@@ -1,6 +1,10 @@
 * {
   box-sizing: border-box;
 }
+a {
+  text-decoration: none;
+  color: unset;
+}
 
 body {
   background-color: rgb(244, 244, 249);
@@ -55,6 +59,7 @@ body {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  text-transform: capitalize;
 }
 
 .product-item .product-details p {
@@ -65,4 +70,18 @@ body {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+#result {
+  margin: 2rem 0;
+  padding: 1rem;
+  background: white;
+  max-height: 75vh;
+  overflow-y: scroll;
+  display: none;
+}
+
+#results-stats {
+  display: block;
+  text-align: center;
+  padding-top: 2rem;
 }

@@ -12,6 +12,7 @@
     "@algolia/autocomplete-js": "1.4.1",
     "@algolia/autocomplete-theme-classic": "1.4.1",
     "@appbaseio/autocomplete-suggestions-plugin": "^1.1.1-alpha",
+    "json-tree-view": "^0.4.12",
     "preact": "10.5.15"
   },
   "devDependencies": {

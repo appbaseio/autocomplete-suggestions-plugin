@@ -4,7 +4,9 @@ import "@algolia/autocomplete-theme-classic";
 import createSuggestionsPlugin from "@appbaseio/autocomplete-suggestions-plugin";
 import { h } from "preact";
 import { getIcon } from "./utils";
+import { renderResults } from "./utils";
 
+var JSONTreeView = require("json-tree-view");
 // appbase client config object
 const appbaseClientConfig = {
   url: "https://appbase-demo-ansible-abxiydt-arc.searchbase.io",
@@ -70,7 +72,10 @@ const advancedUsagePlugin = createSuggestionsPlugin(
         return (
           <a
             className="aa-item product-item"
-            href={item._source.url}
+            href={
+              item._source?.url ??
+              `https://www.google.com/search?q=${item.value}`
+            }
             target="_blank"
             rel="noreferrer"
           >
@@ -123,7 +128,7 @@ const advancedUsagePlugin = createSuggestionsPlugin(
 
       if (url) {
         window.open(url);
-      } else {
+      } else if (item.type !== "index") {
         setQuery(label.replace(/(<([^>]+)>)/gi, ""));
         refresh();
       }
@@ -145,6 +150,7 @@ const advancedUsagePlugin = createSuggestionsPlugin(
         return <p>No products found! Try searching for something else!</p>;
       }
     },
+    useContextValue: true, // we will use context value of the advanced plugin
   }
 );
 
@@ -152,7 +158,10 @@ autocomplete({
   container: "#autocomplete",
   placeholder: "Search for products",
   openOnFocus: true,
-  // debug: true, uncomment to keep the dropdown open
+  // debug: true, //uncomment to keep the dropdown open
   plugins: [defaultUsagePlugin, advancedUsagePlugin],
   detachedMediaQuery: "none",
+  onStateChange({ state: { context } }) {
+    renderResults(context, JSONTreeView);
+  },
 });
