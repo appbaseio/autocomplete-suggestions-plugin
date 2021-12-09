@@ -2,7 +2,7 @@ import { StrictMode, useState } from "react";
 import ReactDOM from "react-dom";
 import React, { useEffect } from "react";
 import "./styles.css";
-import { jsonTreeTheme } from "./utils";
+import { jsonTreeTheme, renderResults } from "./utils";
 
 import JSONTree from "react-json-tree";
 import { autocomplete } from "@algolia/autocomplete-js";
@@ -45,43 +45,54 @@ const rsApiConfig = {
   index: "best-buy-dataset",
 };
 
-// default usage: plugin to fetch suggestions
-const defaultUsagePlugin = createSuggestionsPlugin(
-  appbaseClientConfig,
-  {
-    ...rsApiConfig,
-  },
-  {
-    useContextValue: true,
-  }
-);
-
-// initiator for  autocomplete-js
-const initAutocomplete = (setstate) => {
-  autocomplete({
-    container: "#autocomplete",
-    placeholder: "Search for products",
-    openOnFocus: true,
-    // debug: true,
-    plugins: [defaultUsagePlugin],
-    detachedMediaQuery: "none",
-    onStateChange({ state: { context } }) {
-      setstate({ ...context });
-    },
-    // use the below code incase trying to render
-    // custom jsx
-    // renderer: { createElement, Fragment },
-    // render({ children }, root) {
-    //   render(children, root);
-    // },
-  });
-};
-
 function Autocomplete() {
   const [state, setstate] = useState({});
   useEffect(() => {
+    // default usage: plugin to fetch suggestions
+    const defaultUsagePlugin = createSuggestionsPlugin(
+      appbaseClientConfig,
+      {
+        ...rsApiConfig,
+      },
+      {
+        onItemSelect: (props) => {
+          const {
+            item: { label },
+            setQuery,
+            refresh,
+          } = props;
+          setQuery(label.replace(/(<([^>]+)>)/gi, ""));
+          renderResults({
+            value: label.replace(/(<([^>]+)>)/gi, ""),
+            url: appbaseClientConfig.url,
+            app: appbaseClientConfig.app,
+            credentials: appbaseClientConfig.credentials,
+            settings: appbaseClientConfig.settings,
+            query: {
+              dataField: rsApiConfig.dataField,
+            },
+          }).then((item) => {
+            setstate(item);
+          });
+          refresh();
+        },
+      }
+    );
     // initiate autocomplete-js
-    initAutocomplete(setstate);
+    autocomplete({
+      container: "#autocomplete",
+      placeholder: "Search for products",
+      openOnFocus: true,
+      // debug: true,
+      plugins: [defaultUsagePlugin],
+      detachedMediaQuery: "none",
+      // use the below code incase trying to render
+      // custom jsx
+      // renderer: { createElement, Fragment },
+      // render({ children }, root) {
+      //   render(children, root);
+      // },
+    });
 
     // cleanup before mounting
     return () => {
@@ -92,17 +103,17 @@ function Autocomplete() {
   return (
     <>
       <div id="autocomplete"></div>
-      {!!state.time && !!state.total ? (
+      {!!state?.hits?.total.value && !!state?.took ? (
         <span className="result-stats">
-          Found <b>{state.total}</b> results in <b>{state.time}</b> ms
+          {`Displaying ${state?.hits?.hits.length} results, of ${state?.hits?.total?.value} results found in ${state?.took} ms`}
         </span>
       ) : null}
-      {state.resultsJson && Object.keys(state.resultsJson).length ? (
+      {state?.hits?.hits && Object.keys(state?.hits?.hits).length ? (
         <div className="response-json">
           <JSONTree
             theme={jsonTreeTheme}
             invertTheme={true}
-            data={state.resultsJson}
+            data={state?.hits?.hits}
             shouldExpandNode={() => true}
             keyPath={["products"]}
           />
