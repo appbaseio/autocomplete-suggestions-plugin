@@ -474,17 +474,27 @@ const rsApiConfig = {
 const suggestionsPlugin = _appbaseioAutocompleteSuggestionsPluginDefault.default(appbaseClientConfig, {
   ...rsApiConfig
 }, {
-  useContextValue: true
+  onItemSelect: props => {
+    const {item: {label}, setQuery} = props;
+    setQuery(label.replace(/(<([^>]+)>)/gi, ""));
+    _utils.renderResults({
+      value: label.replace(/(<([^>]+)>)/gi, ""),
+      url: appbaseClientConfig.url,
+      app: appbaseClientConfig.app,
+      credentials: appbaseClientConfig.credentials,
+      settings: appbaseClientConfig.settings,
+      query: {
+        dataField: rsApiConfig.dataField
+      }
+    }, JSONTreeView);
+  }
 });
 _algoliaAutocompleteJs.autocomplete({
   container: "#autocomplete",
   plugins: [suggestionsPlugin],
   // debug: true,
   openOnFocus: true,
-  detachedMediaQuery: "none",
-  onStateChange({state: {context}}) {
-    _utils.renderResults(context, JSONTreeView);
-  }
+  detachedMediaQuery: "none"
 });
 
 },{"@algolia/autocomplete-js":"3Dm7o","@algolia/autocomplete-theme-classic":"4ZOnh","@appbaseio/autocomplete-suggestions-plugin":"3uHrG","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./utils":"2SL7q","json-tree-view":"rfAXK"}],"3Dm7o":[function(require,module,exports) {
@@ -3959,30 +3969,48 @@ _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "renderResults", function () {
   return renderResults;
 });
-const renderResults = (context, JSONTreeView) => {
+const renderResults = ({value, url, app, credentials, settings, query}, JSONTreeView) => {
   const resultStatsElement = document.getElementById("results-stats");
   const resultElement = document.getElementById("result");
-  if (Object.keys(context).length) {
-    if (context.total) {
+  fetch(`${url}/${app}/_reactivesearch.v3`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Basic ${btoa(credentials)}`
+    },
+    body: JSON.stringify({
+      settings,
+      query: [{
+        id: "search",
+        type: "search",
+        ...query,
+        value
+      }]
+    })
+  }).then(res => res.json()).then(data => {
+    const responseData = data.search;
+    if (responseData?.hits?.total?.value) {
       resultStatsElement.style.display = "block";
       // setting results stats
-      resultStatsElement.innerHTML = `Found ${context.total} results in ${context.time} seconds`;
+      resultStatsElement.innerHTML = `Displaying ${responseData?.hits?.hits?.length} results, of ${responseData.hits.total.value} results found in ${responseData.took} ms`;
     } else {
       resultStatsElement.style.display = "none";
     }
-    if (context.resultsJson) {
+    if (Array.isArray(responseData?.hits?.hits)) {
       resultElement.style.display = "block";
       resultElement.innerHTML = "";
-      var jsonView = new JSONTreeView("Results", context.resultsJson);
+      var jsonView = new JSONTreeView("Results", [...responseData?.hits?.hits]);
       jsonView.readonly = true;
       jsonView.expand(true);
       var textnode = document.createTextNode("No Results Found");
       // setting results json
-      resultElement.appendChild(Object.keys(context.resultsJson).length ? jsonView.dom : textnode);
+      resultElement.appendChild(Object.keys(responseData?.hits?.hits).length ? jsonView.dom : textnode);
     } else {
       resultElement.style.display = "none";
     }
-  }
+  }).catch(err => {
+    console.error(err);
+  });
 };
 
 },{"@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"rfAXK":[function(require,module,exports) {
