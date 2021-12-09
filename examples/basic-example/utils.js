@@ -30,7 +30,7 @@ export const renderResults = (
       if (responseData?.hits?.total?.value) {
         resultStatsElement.style.display = "block";
         // setting results stats
-        resultStatsElement.innerHTML = `Found ${responseData.hits.total.value} results in ${responseData.took} ms`;
+        resultStatsElement.innerHTML = `Displaying ${responseData?.hits?.hits.length} results, of ${responseData.hits.total.value} results found in ${responseData.took} ms`;
       } else {
         resultStatsElement.style.display = "none";
       }

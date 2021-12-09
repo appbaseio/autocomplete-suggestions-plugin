@@ -53,7 +53,29 @@ const defaultUsagePlugin = createSuggestionsPlugin(
   {
     ...rsApiConfig,
   },
-  {}
+  {
+    onItemSelect: (props) => {
+      const {
+        item: { label },
+        setQuery,
+      } = props;
+
+      setQuery(label.replace(/(<([^>]+)>)/gi, ""));
+      renderResults(
+        {
+          value: label.replace(/(<([^>]+)>)/gi, ""),
+          url: appbaseClientConfig.url,
+          app: appbaseClientConfig.app,
+          credentials: appbaseClientConfig.credentials,
+          settings: appbaseClientConfig.settings,
+          query: {
+            dataField: rsApiConfig.dataField,
+          },
+        },
+        JSONTreeView
+      );
+    },
+  }
 );
 
 // advanced usage: plugin to fetch suggestions and
@@ -101,15 +123,28 @@ const advancedUsagePlugin = createSuggestionsPlugin(
     },
     onItemSelect: (props) => {
       const {
-        item: { url, label },
+        item: { url, label, type },
         setQuery,
         refresh,
       } = props;
 
       if (url) {
         window.open(url);
-      } else if (item.type !== "index") {
+      } else if (type !== "index") {
         setQuery(label.replace(/(<([^>]+)>)/gi, ""));
+        renderResults(
+          {
+            value: label.replace(/(<([^>]+)>)/gi, ""),
+            url: appbaseClientConfig.url,
+            app: appbaseClientConfig.app,
+            credentials: appbaseClientConfig.credentials,
+            settings: appbaseClientConfig.settings,
+            query: {
+              dataField: rsApiConfig.dataField,
+            },
+          },
+          JSONTreeView
+        );
         refresh();
       }
     },
@@ -130,7 +165,6 @@ const advancedUsagePlugin = createSuggestionsPlugin(
         return <p>No products found! Try searching for something else!</p>;
       }
     },
-    useContextValue: true, // we will use context value of the advanced plugin
   }
 );
 
@@ -141,7 +175,4 @@ autocomplete({
   debug: true, //uncomment to keep the dropdown open
   plugins: [defaultUsagePlugin, advancedUsagePlugin],
   detachedMediaQuery: "none",
-  onStateChange({ state: { context } }) {
-    renderResults(context, JSONTreeView);
-  },
 });

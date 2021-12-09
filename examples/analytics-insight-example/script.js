@@ -52,7 +52,29 @@ const suggestionsPlugin = createSuggestionsPlugin(
   {
     ...rsApiConfig,
   },
-  { useContextValue: true }
+  {
+    onItemSelect: (props) => {
+      const {
+        item: { label },
+        setQuery,
+      } = props;
+
+      setQuery(label.replace(/(<([^>]+)>)/gi, ""));
+      renderResults(
+        {
+          value: label.replace(/(<([^>]+)>)/gi, ""),
+          url: appbaseClientConfig.url,
+          app: appbaseClientConfig.app,
+          credentials: appbaseClientConfig.credentials,
+          settings: appbaseClientConfig.settings,
+          query: {
+            dataField: rsApiConfig.dataField,
+          },
+        },
+        JSONTreeView
+      );
+    },
+  }
 );
 
 autocomplete({
@@ -61,8 +83,5 @@ autocomplete({
   debug: false,
   openOnFocus: true,
   detachedMediaQuery: "none",
-  onStateChange({ state: { context } }) {
-    renderResults(context, JSONTreeView);
-  },
   // ...
 });
