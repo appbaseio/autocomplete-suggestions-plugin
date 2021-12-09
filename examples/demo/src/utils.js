@@ -104,3 +104,38 @@ export const jsonTreeTheme = {
   base0E: "#ae81ff",
   base0F: "#cc6633",
 };
+
+export const renderResults = ({
+  value,
+  url,
+  app,
+  credentials,
+  settings,
+  query,
+}) => {
+  return fetch(`${url}/${app}/_reactivesearch.v3`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Basic ${btoa(credentials)}`,
+    },
+    body: JSON.stringify({
+      settings,
+      query: [
+        {
+          id: "search",
+          type: "search",
+          ...query,
+          value,
+        },
+      ],
+    }), // body data type must match "Content-Type" header
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      return data.search;
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
