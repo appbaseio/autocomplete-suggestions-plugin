@@ -81,10 +81,17 @@ const defaultUsagePlugin = createSuggestionsPlugin(
 // advanced usage: plugin to fetch suggestions and
 // render custom ui for header, footer and suggestion items
 const advancedUsagePlugin = createSuggestionsPlugin(
-  appbaseClientConfig,
+  {
+    ...appbaseClientConfig,
+    settings: {
+      ...appbaseClientConfig.settings,
+      enableQueryRules: false,
+    },
+  },
   {
     ...rsApiConfig,
     enableRecentSuggestions: false,
+    enablePopularSuggestions: false,
   },
   {
     renderItem: (props) => {
