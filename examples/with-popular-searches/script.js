@@ -29,12 +29,13 @@ const rsApiConfig = {
   ],
   enablePopularSuggestions: true,
   popularSuggestionsConfig: {
-    size: 3,
+    size: 2,
     minChars: 3,
+    minCount: 3,
     index: "best-buy-dataset",
   },
   index: "best-buy-dataset",
-  size: 3,
+  size: 5,
 };
 
 const suggestionsPlugin = createSuggestionsPlugin(

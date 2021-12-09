@@ -33,18 +33,20 @@ const rsApiConfig = {
   ],
   enableRecentSuggestions: true,
   recentSuggestionsConfig: {
-    size: 3,
+    size: 2,
     minHits: 2,
+    minChars: 4,
     index: "best-buy-dataset",
   },
   enablePopularSuggestions: true,
   popularSuggestionsConfig: {
-    size: 3,
+    size: 2,
     minChars: 3,
+    minCount: 3,
     index: "best-buy-dataset",
   },
   index: "best-buy-dataset",
-  size: 3,
+  size: 5,
 };
 
 // default usage: plugin to fetch suggestions
