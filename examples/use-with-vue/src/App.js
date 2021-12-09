@@ -51,7 +51,29 @@ const defaultUsagePlugin = createSuggestionsPlugin(
   {
     ...rsApiConfig,
   },
-  { useContextValue: true }
+  {
+    onItemSelect: (props) => {
+      const {
+        item: { label },
+        setQuery,
+      } = props;
+
+      setQuery(label.replace(/(<([^>]+)>)/gi, ""));
+      renderResults(
+        {
+          value: label.replace(/(<([^>]+)>)/gi, ""),
+          url: appbaseClientConfig.url,
+          app: appbaseClientConfig.app,
+          credentials: appbaseClientConfig.credentials,
+          settings: appbaseClientConfig.settings,
+          query: {
+            dataField: rsApiConfig.dataField,
+          },
+        },
+        JSONTreeView
+      );
+    },
+  }
 );
 
 export default {
@@ -64,9 +86,6 @@ export default {
         openOnFocus: true,
         plugins: [defaultUsagePlugin],
         detachedMediaQuery: "none",
-        onStateChange({ state: { context } }) {
-          renderResults(context, JSONTreeView);
-        },
         debug: true,
       });
     });
