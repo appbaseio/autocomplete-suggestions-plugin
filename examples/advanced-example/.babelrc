@@ -1,0 +1,19 @@
+{
+    "presets": [
+        "@babel/preset-env"
+    ],
+    "plugins": [
+        "transform-runtime",
+        [
+            "transform-react-jsx",
+            {
+                "pragma": "h"
+            }
+        ]
+    ],
+    "parserOpts": {
+        "plugins": [
+            "dynamicImport"
+        ]
+    }
+}

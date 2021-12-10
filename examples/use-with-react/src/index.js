@@ -1,13 +1,13 @@
 import { StrictMode, useState } from "react";
 import ReactDOM from "react-dom";
 import React, { useEffect } from "react";
-import "./styles.css";
-import { jsonTreeTheme, renderResults } from "./utils";
-
 import JSONTree from "react-json-tree";
 import { autocomplete } from "@algolia/autocomplete-js";
 import "@algolia/autocomplete-theme-classic";
 import createSuggestionsPlugin from "@appbaseio/autocomplete-suggestions-plugin";
+
+import { jsonTreeTheme, renderResults } from "./utils";
+import "./styles.css";
 
 // appbase client config object
 const appbaseClientConfig = {
